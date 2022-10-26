@@ -2,13 +2,13 @@
   become: yes
   become_method: sudo
   tasks:
-  - name: Create StoragePool
-    ansible.builtin.command: zpool create StoragePool /dev/nvme0n1
-    args:
-      creates: /StoragePool
+    - name: Create StoragePool
+      ansible.builtin.command: zpool create StoragePool /dev/nvme0n1
+      args:
+        creates: /StoragePool
 
-  - name: Set StoragePool Compression
-    ansible.builtin.command: zfs set compression=lz4 StoragePool
+    - name: Set StoragePool Compression
+      ansible.builtin.command: zfs set compression=lz4 StoragePool
 
 
 
