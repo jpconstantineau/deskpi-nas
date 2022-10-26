@@ -5,8 +5,8 @@
   tasks:
     - name: Create StoragePool
       ansible.builtin.shell: 'zpool create StoragePool /dev/nvme0n1'
-      register: command_output
-      creates: /StoragePool
+        register: command_output
+        creates: /StoragePool
 
     - name: command output
       ansible.builtin.debug:
