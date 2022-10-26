@@ -4,12 +4,18 @@
   become_method: sudo
   tasks:
     - name: Create StoragePool
-      ansible.builtin.command: 
-        cmd: zpool create StoragePool /dev/nvme0n1
-        creates: /StoragePool
+      ansible.builtin.shell: 'zpool create StoragePool /dev/nvme0n1'
+      register: command_output
+      creates: /StoragePool
+
+    - name: command output
+      ansible.builtin.debug:
+        var: command_output.stdout_lines
 
     - name: Set StoragePool Compression
-      ansible.builtin.command: zfs set compression=lz4 StoragePool
+      ansible.builtin.shell: 'zfs set compression=lz4 StoragePool'
+
+
 
 
 
