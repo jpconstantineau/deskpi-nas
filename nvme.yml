@@ -3,8 +3,8 @@
   become_method: sudo
   tasks:
     - name: Create StoragePool
-      ansible.builtin.command: zpool create StoragePool /dev/nvme0n1
-      args:
+      ansible.builtin.command: 
+        cmd: zpool create StoragePool /dev/nvme0n1
         creates: /StoragePool
 
     - name: Set StoragePool Compression
