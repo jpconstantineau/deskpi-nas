@@ -1,0 +1,17 @@
+- hosts: zfs
+  become: yes
+  become_method: sudo
+  tasks:
+  - name: Create StoragePool
+    ansible.builtin.command:
+      cmd: zpool create StoragePool /dev/nvme0n1
+      creates: /StoragePool
+
+  - name: Set StoragePool Compression
+    ansible.builtin.command:
+      cmd: zfs set compression=lz4 StoragePool
+
+
+
+
+      
