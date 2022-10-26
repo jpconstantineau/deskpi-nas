@@ -6,7 +6,8 @@
     - name: Create StoragePool
       command: zpool create StoragePool /dev/nvme0n1
       register: command_output
-      creates: /StoragePool
+      args:
+        creates: /StoragePool
 
     - name: Create StoragePool - command output
       ansible.builtin.debug:
