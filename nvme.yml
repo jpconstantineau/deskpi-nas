@@ -1,5 +1,5 @@
 ---
-- hosts: zfs
+- hosts: nvme
   become: yes
   become_method: sudo
   tasks:
@@ -15,10 +15,3 @@
 
     - name: Set StoragePool Compression
       command: zfs set compression=lz4 StoragePool
-
-
-
-
-
-
-      
