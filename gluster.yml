@@ -11,9 +11,11 @@
       apt:
         name: glusterfs-server
         state: present
+
 - hosts: gluster-client
   become: yes
   become_method: sudo
+  tasks:
     - name: Install glusterfs-client
       apt:
         name: glusterfs-client
