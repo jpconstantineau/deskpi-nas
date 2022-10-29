@@ -14,7 +14,7 @@
         var: command_output.stdout_lines
 
     - name: Set StoragePool Compression
-      command: |
+      shell: |
         zfs set atime=off StoragePool/gluster
         zfs set xattr=sa StoragePool/gluster
         zfs set exec=off StoragePool/gluster

@@ -5,9 +5,9 @@
   tasks:
     - name: Peer with storage 1
       command: gluster peer probe storage1
-    - name: Peer with storage 1
+    - name: Peer with storage 2
       command: gluster peer probe storage2
-    - name: Peer with storage 1
+    - name: Peer with storage 3
       command: gluster peer probe storage3
-    - name: Peer with storage 1
+    - name: Peer with storage 4
       command: gluster peer probe storage4
