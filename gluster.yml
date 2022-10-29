@@ -12,6 +12,12 @@
         name: glusterfs-server
         state: present
 
+    - name: Make sure glusterd service is running
+      ansible.builtin.systemd:
+        state: started
+        enabled: yes
+        name: glusterd
+
 - hosts: gluster-client
   become: yes
   become_method: sudo
@@ -20,3 +26,5 @@
       apt:
         name: glusterfs-client
         state: present
+
+
