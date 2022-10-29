@@ -1,0 +1,22 @@
+---
+- hosts: gluster-server
+  become: yes
+  become_method: sudo
+  tasks:
+    - name: Create StoragePool/gluster
+      command: zfs create StoragePool/gluster
+      register: command_output
+      args:
+        creates: /StoragePool/gluster
+
+    - name: Create gluster file system - output
+      ansible.builtin.debug:
+        var: command_output.stdout_lines
+
+    - name: Set StoragePool Compression
+      command: |
+        zfs set atime=off StoragePool/gluster
+        zfs set xattr=sa StoragePool/gluster
+        zfs set exec=off StoragePool/gluster
+        zfs set sync=disabled StoragePool/gluster
+        zfs set acltype=posixacl StoragePool/gluster

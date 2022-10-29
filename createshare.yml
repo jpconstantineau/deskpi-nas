@@ -1,0 +1,17 @@
+---
+- hosts: gluster-client
+  become: yes
+  become_method: sudo
+  tasks:
+    - name: Create StoragePool/gluster/shared
+      command: zfs create StoragePool/gluster/shared
+      args:
+        creates: /StoragePool/gluster/shared
+
+    - name: Create StoragePool/gluster/shared
+      command: mkdir /StoragePool/gluster/shared/brick
+      args:
+        creates: /StoragePool/gluster/shared/brick
+        
+    - name: Create gluster volume shared
+      command: gluster volume create shared storage1:/StoragePool/gluster/shared/brick

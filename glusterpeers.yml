@@ -1,0 +1,13 @@
+---
+- hosts: gluster-server
+  become: yes
+  become_method: sudo
+  tasks:
+    - name: Peer with storage 1
+      command: gluster peer probe storage1
+    - name: Peer with storage 1
+      command: gluster peer probe storage2
+    - name: Peer with storage 1
+      command: gluster peer probe storage3
+    - name: Peer with storage 1
+      command: gluster peer probe storage4
