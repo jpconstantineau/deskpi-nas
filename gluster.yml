@@ -26,5 +26,9 @@
       apt:
         name: glusterfs-client
         state: present
+    - name: Install samba
+      apt:
+        name: samba, samba-common-bin
+        state: present
 
 
