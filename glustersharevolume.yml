@@ -1,0 +1,30 @@
+---
+- hosts: gluster-server
+  become: yes
+  become_method: sudo
+  tasks:
+    - name: Create StoragePool/gluster/opera
+      command: zfs create StoragePool/gluster/opera
+      register: command_output
+      args:
+        creates: /StoragePool/gluster/opera
+
+    - name: Creates brick directory
+      file:
+        path: /StoragePool/gluster/opera/brick
+        state: directory
+
+- hosts: gluster-client
+  become: yes
+  become_method: sudo
+    - name: create gluster volume with multiple bricks
+      gluster.gluster.gluster_volume:
+        state: present
+        name: opera
+        disperse: 3
+        bricks: /StoragePool/gluster/opera/brick
+        cluster:
+          - storage2
+          - storage3
+          - storage4
+      run_once: true
