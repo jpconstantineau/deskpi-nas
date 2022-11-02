@@ -17,11 +17,12 @@
 - hosts: gluster-client
   become: yes
   become_method: sudo
+  tasks:
     - name: create gluster volume with multiple bricks
       gluster.gluster.gluster_volume:
         state: present
         name: opera
-        disperse: 3
+        disperses: 3
         bricks: /StoragePool/gluster/opera/brick
         cluster:
           - storage2
