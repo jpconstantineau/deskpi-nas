@@ -12,6 +12,9 @@
     - name: Creates brick directory
       file:
         path: /StoragePool/gluster/opera/brick
+        owner: root
+        group: root
+        mode: '1777'
         state: directory
 
 - hosts: gluster-client
